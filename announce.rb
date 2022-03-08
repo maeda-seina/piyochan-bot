@@ -10,5 +10,6 @@ channels = JSON.parse(channels)
 text_channels = channels.select { |c| (c['type']).zero? }
 ramdom_index = rand(0...text_channels.count)
 text_channel = text_channels[ramdom_index]
-p text_channel
+p text_channel_name = text_channel['name']
+p text_channel_topic = text_channel['topic']
 bot.run
