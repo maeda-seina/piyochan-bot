@@ -10,8 +10,8 @@ channels = Discordrb::API::Server.channels(ENV['DISCORD_BOT_TOKEN'],
                                            ENV['DISCORD_SERVER_ID'])
 channels = JSON.parse(channels)
 text_channels = channels.select { |c| (c['type']).zero? }
-ramdom_index = rand(0...text_channels.count)
-text_channel = text_channels[ramdom_index]
+random_index = rand(0...text_channels.count)
+text_channel = text_channels[random_index]
 text_channel_name = text_channel['name']
 text_channel_topic = text_channel['topic']
 message = "本日のチャンネル紹介\nチャンネル名： ##{text_channel_name}"
