@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'discordrb'
 require 'dotenv/load'
 
@@ -16,10 +18,8 @@ message = "本日のチャンネル紹介\nチャンネル名： ##{text_channel
 topic_message = "\n説明： #{text_channel_topic}"
 message += topic_message unless text_channel_topic.nil?
 
-
 Discordrb::API::Channel.create_message(ENV['DISCORD_BOT_TOKEN'],
                                        ENV['DISCORD_RANDOM_CHANNEL_ID'],
                                        message)
-
 
 bot.run
