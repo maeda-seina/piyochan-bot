@@ -12,7 +12,10 @@ ramdom_index = rand(0...text_channels.count)
 text_channel = text_channels[ramdom_index]
 text_channel_name = text_channel['name']
 text_channel_topic = text_channel['topic']
-message = "本日のチャンネル紹介\nチャンネル名： ##{text_channel_name}\n説明： #{text_channel_topic}"
+message = "本日のチャンネル紹介\nチャンネル名： ##{text_channel_name}"
+topic_message = "\n説明： #{text_channel_topic}"
+message += topic_message unless text_channel_topic.nil?
+
 
 Discordrb::API::Channel.create_message(ENV['DISCORD_BOT_TOKEN'],
                                        ENV['DISCORD_RANDOM_CHANNEL_ID'],
