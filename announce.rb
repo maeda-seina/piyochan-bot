@@ -6,5 +6,7 @@ bot = Discordrb::Bot.new(token: ENV['DISCORD_BOT_TOKEN'],
 
 channels = Discordrb::API::Server.channels(ENV['DISCORD_BOT_TOKEN'],
                                            ENV['DISCORD_SERVER_ID'])
-p JSON.parse(channels)
+channels = JSON.parse(channels)
+p text_channels = channels.select { |c| (c['type']).zero? }
+
 bot.run
