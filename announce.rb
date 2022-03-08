@@ -7,6 +7,8 @@ bot = Discordrb::Bot.new(token: ENV['DISCORD_BOT_TOKEN'],
 channels = Discordrb::API::Server.channels(ENV['DISCORD_BOT_TOKEN'],
                                            ENV['DISCORD_SERVER_ID'])
 channels = JSON.parse(channels)
-p text_channels = channels.select { |c| (c['type']).zero? }
-
+text_channels = channels.select { |c| (c['type']).zero? }
+ramdom_index = rand(0...text_channels.count)
+text_channel = text_channels[ramdom_index]
+p text_channel
 bot.run
