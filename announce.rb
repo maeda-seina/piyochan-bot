@@ -10,6 +10,13 @@ channels = JSON.parse(channels)
 text_channels = channels.select { |c| (c['type']).zero? }
 ramdom_index = rand(0...text_channels.count)
 text_channel = text_channels[ramdom_index]
-p text_channel_name = text_channel['name']
-p text_channel_topic = text_channel['topic']
+text_channel_name = text_channel['name']
+text_channel_topic = text_channel['topic']
+message = "本日のチャンネル紹介\nチャンネル名： ##{text_channel_name}\n説明： #{text_channel_topic}"
+
+Discordrb::API::Channel.create_message(ENV['DISCORD_BOT_TOKEN'],
+                                       ENV['DISCORD_RANDOM_CHANNEL_ID'],
+                                       message)
+
+
 bot.run
