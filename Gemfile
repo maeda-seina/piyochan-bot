@@ -7,6 +7,9 @@ group :development, :test do
   gem 'byebug'
 end
 
+group :development do
+  gem 'rubocop', require: false
+end
+
 gem 'discordrb'
 gem 'dotenv'
-gem 'rubocop', require: false
