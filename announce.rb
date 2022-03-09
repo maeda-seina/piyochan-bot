@@ -15,12 +15,20 @@ text_channel = text_channels[random_index]
 text_channel_name = text_channel['name']
 text_channel_topic = text_channel['topic']
 text_channel_url = "https://discord.com/channels/#{text_channel['guild_id']}/#{text_channel['id']}"
-message = "本日のチャンネル紹介\nチャンネル名： ##{text_channel_name}\nURL: #{text_channel_url}"
+message = "チャンネル名： [##{text_channel_name}](#{text_channel_url})"
 topic_message = "\n説明： #{text_channel_topic}"
 message += topic_message unless text_channel_topic.nil?
 
+embed = {
+  title: "本日のチャンネル紹介",
+  description: message,
+  color: 3066993
+}
+
 Discordrb::API::Channel.create_message(ENV['DISCORD_BOT_TOKEN'],
                                        ENV['DISCORD_RANDOM_CHANNEL_ID'],
-                                       message)
+                                       "こんにちは！今日オススメのチャンネルを紹介をするよ〜",
+                                       false,
+                                       embed)
 
 bot.run
