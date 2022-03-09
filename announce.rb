@@ -20,14 +20,14 @@ topic_message = "\n説明： #{text_channel_topic}"
 message += topic_message unless text_channel_topic.nil?
 
 embed = {
-  title: "本日のチャンネル紹介",
+  title: '本日のチャンネル紹介',
   description: message,
-  color: 3066993
+  color: 3_066_993
 }
 
 Discordrb::API::Channel.create_message(ENV['DISCORD_BOT_TOKEN'],
                                        ENV['DISCORD_RANDOM_CHANNEL_ID'],
-                                       "こんにちは！今日オススメのチャンネルを紹介をするよ〜",
+                                       'こんにちは！今日オススメのチャンネルを紹介をするよ〜',
                                        false,
                                        embed)
 
