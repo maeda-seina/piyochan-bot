@@ -10,8 +10,7 @@ channels = Discordrb::API::Server.channels(ENV['DISCORD_BOT_TOKEN'],
                                            ENV['DISCORD_SERVER_ID'])
 channels = JSON.parse(channels)
 text_channels = channels.select { |c| (c['type']).zero? }
-random_index = rand(0...text_channels.count)
-text_channel = text_channels[random_index]
+text_channel = text_channels.sample
 text_channel_name = text_channel['name']
 text_channel_topic = text_channel['topic']
 text_channel_url = "https://discord.com/channels/#{text_channel['guild_id']}/#{text_channel['id']}"
