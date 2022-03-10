@@ -3,10 +3,11 @@
 require_relative 'bot_message_formatter'
 
 class BotMessage
+  BOT = Discordrb::Bot.new(token: ENV['DISCORD_BOT_TOKEN'],
+                           client_id: ENV['DISCORD_CLIENT_ID'])
   class << self
     def run
-      Discordrb::Bot.new(token: ENV['DISCORD_BOT_TOKEN'],
-                         client_id: ENV['DISCORD_CLIENT_ID']).run
+      BOT.run
     end
 
     def create
