@@ -5,13 +5,13 @@ require 'dotenv/load'
 
 class ChannelInfo
   class << self
-    def get_channels
+    def call_channels_api
       Discordrb::API::Server.channels(ENV['DISCORD_BOT_TOKEN'],
                                       ENV['DISCORD_SERVER_ID'])
     end
 
     def parse
-      JSON.parse(ChannelInfo.get_channels)
+      JSON.parse(ChannelInfo.call_channels_api)
     end
   end
 end
