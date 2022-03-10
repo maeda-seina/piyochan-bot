@@ -7,20 +7,22 @@ class BotMessageFormatter
   EMBED_TITLE = '本日のチャンネル紹介'
 
   def initialize
-    @channel_message = ChannelInfo.parse
+    @all_channels = ChannelInfo.parse
     @text_channel = select_text_channels.sample
   end
 
-  def select_text_channels
-    @channel_message.select { |c| (c['type']).zero? }
-  end
-
-  def embed_message
+  def create_embed_message
     {
       title: EMBED_TITLE,
-      description:,
+      description:format_embed_description,
       color: 3_066_993
     }
+  end
+
+  private
+
+  def select_text_channels
+    @all_channels.select { |c| (c['type']).zero? }
   end
 
   def text_channel_name
@@ -39,9 +41,9 @@ class BotMessageFormatter
     "https://discord.com/channels/#{@text_channel['guild_id']}/#{@text_channel['id']}"
   end
 
-  def description
-    message = "チャンネル名： [##{text_channel_name}](#{text_channel_url})"
-    message += topic_message unless text_channel_topic.nil?
-    message
+  def format_embed_description
+    description = "チャンネル名： [##{text_channel_name}](#{text_channel_url})"
+    description += topic_message unless text_channel_topic.nil?
+    description
   end
 end

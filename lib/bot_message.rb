@@ -12,17 +12,17 @@ class BotMessage
     def create
       Discordrb::API::Channel.create_message(ENV['DISCORD_BOT_TOKEN'],
                                              ENV['DISCORD_RANDOM_CHANNEL_ID'],
-                                             BotMessage.not_embed_message,
+                                             BotMessage.message,
                                              false,
                                              BotMessage.embed_message)
     end
 
-    def not_embed_message
+    def message
       BotMessageFormatter::MESSAGE
     end
 
     def embed_message
-      BotMessageFormatter.new.embed_message
+      BotMessageFormatter.new.create_embed_message
     end
   end
 end
