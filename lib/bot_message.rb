@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'bot_message_formatter'
 
 class BotMessage
@@ -16,7 +18,6 @@ class BotMessage
                                            BotMessage.not_embed_message,
                                            false,
                                            BotMessage.embed_message)
-
   end
 
   def self.not_embed_message

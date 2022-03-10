@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require_relative 'channel_info'
 
 class BotMessageFormatter
-
   MESSAGE = 'こんにちは！今日オススメのチャンネルを紹介をするよ〜'
   EMBED_TITLE = '本日のチャンネル紹介'
 
@@ -17,7 +18,7 @@ class BotMessageFormatter
   def embed_message
     {
       title: EMBED_TITLE,
-      description: description,
+      description:,
       color: 3_066_993
     }
   end
