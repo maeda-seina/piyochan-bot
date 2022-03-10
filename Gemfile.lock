@@ -47,6 +47,12 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.16.0)
       parser (>= 3.1.1.0)
+    rubocop-fjord (0.2.0)
+      rubocop (>= 1.0)
+      rubocop-performance
+    rubocop-performance (1.13.3)
+      rubocop (>= 1.7.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
     ruby-progressbar (1.11.0)
     unf (0.1.4)
       unf_ext
@@ -65,6 +71,7 @@ DEPENDENCIES
   discordrb
   dotenv
   rubocop
+  rubocop-fjord
 
 RUBY VERSION
    ruby 3.1.1p18

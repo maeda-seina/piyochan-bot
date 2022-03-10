@@ -9,6 +9,7 @@ end
 
 group :development do
   gem 'rubocop', require: false
+  gem 'rubocop-fjord', require: false
 end
 
 gem 'discordrb'
