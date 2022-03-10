@@ -1,8 +1,5 @@
 require_relative 'channel_info'
 
-# ゴール
-# 取得したチャンネル情報をrandomチャンネルに出力するための文言にフォーマットする
-
 class BotMessageFormatter
 
   MESSAGE = 'こんにちは！今日オススメのチャンネルを紹介をするよ〜'
@@ -16,10 +13,6 @@ class BotMessageFormatter
   def select_text_channels
     @channel_message.select { |c| (c['type']).zero? }
   end
-
-  # def select_a_text_channel
-  #   p @text_channel = select_text_channels.sample
-  # end
 
   def embed_message
     {
@@ -51,9 +44,3 @@ class BotMessageFormatter
     message
   end
 end
-
-# わざわざインスタンス作る必要ないものはクラスメソッドでね。
-# 確か、インスタンスごとに振る舞いが違うものはインスタンスメソッドで、どのインスタンスでも同じというのはクラスメソッドで書くのが良い
-# そのファイル（クラス）ないだけで使用しているメソッドは、privateメソッドに切り出す。
-#
-# initializeメソッドを持っているかが大きい？

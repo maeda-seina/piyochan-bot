@@ -1,8 +1,5 @@
 require_relative 'bot_message_formatter'
 
-# ゴール
-# randomチャンネルにフォーマットしたメッセージを送信する。
-
 class BotMessage
   def initialize
     @bot = Discordrb::Bot.new(token: ENV['DISCORD_BOT_TOKEN'],
@@ -22,7 +19,6 @@ class BotMessage
 
   end
 
-  # これが上のmessageとembedに入るイメージ。
   def self.not_embed_message
     BotMessageFormatter::MESSAGE
   end
@@ -31,5 +27,3 @@ class BotMessage
     BotMessageFormatter.new.embed_message
   end
 end
-
-BotMessage.new
