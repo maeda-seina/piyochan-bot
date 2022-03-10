@@ -14,7 +14,7 @@ class BotMessageFormatter
   def create_embed_message
     {
       title: EMBED_TITLE,
-      description:format_embed_description,
+      description: format_embed_description,
       color: 3_066_993
     }
   end
