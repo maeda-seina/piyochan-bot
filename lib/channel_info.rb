@@ -7,7 +7,7 @@ class ChannelInfo
     DiscordApi::ALL_CHANNELS
   end
 
-  def self.parse
+  def self.all
     JSON.parse(ChannelInfo.call_all_channel_api)
   end
 end

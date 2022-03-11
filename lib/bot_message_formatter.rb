@@ -7,7 +7,7 @@ class BotMessageFormatter
   EMBED_TITLE = '本日のチャンネル紹介'
 
   def initialize
-    @all_channels = ChannelInfo.parse
+    @all_channels = ChannelInfo.all
     @text_channel = select_text_channels.sample
   end
 
