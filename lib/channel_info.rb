@@ -1,17 +1,13 @@
 # frozen_string_literal: true
 
-require 'discordrb'
-require 'dotenv/load'
+require_relative 'discord_api'
 
 class ChannelInfo
-  class << self
-    def call_channels_api
-      Discordrb::API::Server.channels(ENV['DISCORD_BOT_TOKEN'],
-                                      ENV['DISCORD_SERVER_ID'])
-    end
+  def self.call_all_channel_api
+    DiscordApi::ALL_CHANNELS
+  end
 
-    def parse
-      JSON.parse(ChannelInfo.call_channels_api)
-    end
+  def self.parse
+    JSON.parse(ChannelInfo.call_all_channel_api)
   end
 end
