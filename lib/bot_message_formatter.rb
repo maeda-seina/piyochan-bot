@@ -48,7 +48,7 @@ class BotMessageFormatter
   end
 
   def exclude_private_text_channel
-    select_text_channels.select{ |channel| channel['permission_overwrites'].empty? }
+    select_text_channels.select { |channel| channel['permission_overwrites'].empty? }
   end
 
   def select_category_channel
@@ -56,14 +56,14 @@ class BotMessageFormatter
   end
 
   def select_minute_report_category
-    @all_channels.select { |channel| channel['name'].include?("分報") }
+    @all_channels.select { |channel| channel['name'].include?('分報') }
   end
 
   def minute_report_category_ids
-    select_minute_report_category.map{|channel| channel['id']}
+    select_minute_report_category.map { |channel| channel['id'] }
   end
 
   def exclude_minute_report_channel
-    exclude_private_text_channel.select{|channel| !(minute_report_category_ids.include?(channel['parent_id']))}
+    exclude_private_text_channel.reject { |channel| minute_report_category_ids.include?(channel['parent_id']) }
   end
 end
