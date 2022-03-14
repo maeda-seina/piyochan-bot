@@ -46,4 +46,10 @@ class BotMessageFormatter
     description += topic_message unless text_channel_topic.nil?
     description
   end
+
+  def exclude_private_text_channel
+    select_text_channels.select{ |channel| channel['permission_overwrites'].empty? }
+  end
 end
+
+pp BotMessageFormatter.new.send(:exclude_private_text_channel)
