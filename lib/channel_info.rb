@@ -3,11 +3,13 @@
 require_relative 'discord_api'
 
 class ChannelInfo
-  def self.call_all_channel_api
-    DiscordApi::ALL_CHANNELS
-  end
+  class << self
+    def call_all_channel_api
+      DiscordApi::ALL_CHANNELS
+    end
 
-  def self.all
-    JSON.parse(ChannelInfo.call_all_channel_api)
+    def all
+      JSON.parse(ChannelInfo.call_all_channel_api)
+    end
   end
 end
