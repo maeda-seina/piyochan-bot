@@ -4,10 +4,6 @@ require_relative 'bot_message_formatter'
 
 class BotMessage
   class << self
-    def run
-      DiscordApi::BOT.run
-    end
-
     def create
       DiscordApi.create_message(BotMessage.message, BotMessage.embed_message)
     end
