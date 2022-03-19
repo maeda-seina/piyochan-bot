@@ -51,10 +51,6 @@ class BotMessageFormatter
     select_text_channels.select { |channel| channel['permission_overwrites'].empty? }
   end
 
-  def select_category_channel
-    @all_channels.select { |channel| channel['type'] == 4 }
-  end
-
   def select_minute_report_category
     @all_channels.select { |channel| channel['name'].include?('分報') }
   end
