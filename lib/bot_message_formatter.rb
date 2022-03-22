@@ -8,7 +8,7 @@ class BotMessageFormatter
 
   def initialize
     @all_channels = ChannelInfo.all
-    @text_channel = exclude_minute_report_channel.sample
+    @text_channel = select_hobby_category_channels.sample
   end
 
   def create_embed_message
@@ -47,19 +47,15 @@ class BotMessageFormatter
     description
   end
 
-  def exclude_private_text_channel
-    select_text_channels.select { |channel| channel['permission_overwrites'].empty? }
+  def select_hobby_category
+    @all_channels.select { |channel| channel['name'].include?('趣味') }
   end
 
-  def select_minute_report_category
-    @all_channels.select { |channel| channel['name'].include?('分報') }
+  def hobby_category_id
+    select_hobby_category[0]['id']
   end
 
-  def minute_report_category_ids
-    select_minute_report_category.map { |channel| channel['id'] }
-  end
-
-  def exclude_minute_report_channel
-    exclude_private_text_channel.reject { |channel| minute_report_category_ids.include?(channel['parent_id']) }
+  def select_hobby_category_channels
+    @all_channels.select { |channel| channel['parent_id'] == hobby_category_id }
   end
 end
