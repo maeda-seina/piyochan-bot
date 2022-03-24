@@ -11,7 +11,7 @@ class BotMessageFormatter
     @text_channel = select_hobby_category_channels.sample
   end
 
-  def create_embed_message(embed_description: nil )
+  def create_embed_message(embed_description: nil)
     {
       title: EMBED_TITLE,
       description: embed_description || format_embed_description,
