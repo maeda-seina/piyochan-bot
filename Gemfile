@@ -12,5 +12,10 @@ group :development do
   gem 'rubocop-fjord', require: false
 end
 
+group :test do
+  gem 'minitest'
+  gem 'webmock'
+end
+
 gem 'discordrb'
 gem 'dotenv'
