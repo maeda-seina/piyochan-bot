@@ -10,6 +10,7 @@ end
 group :development do
   gem 'rubocop', require: false
   gem 'rubocop-fjord', require: false
+  gem 'rubocop-minitest', require: false
 end
 
 group :test do
