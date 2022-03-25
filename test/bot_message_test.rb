@@ -20,11 +20,8 @@ class BotMessageTest < Minitest::Test
 
   def test_post_message
     message_url = "#{Discordrb::API.api_base}/channels/#{ENV['DISCORD_RANDOM_CHANNEL_ID']}/messages"
-    first_message = stub_request(:post, message_url)
-                    .with(body: hash_including({ content: 'こんにちは！今日オススメのチャンネルを紹介をするよ〜' }))
     stub_message = stub_request(:post, message_url).with(body: hash_including(embed_hash))
     BotMessage.create(embed_hash_description)
-    assert_requested(first_message)
     assert_requested(stub_message)
   end
 
@@ -32,6 +29,7 @@ class BotMessageTest < Minitest::Test
 
   def embed_hash
     {
+      content: 'こんにちは！今日オススメのチャンネルを紹介をするよ〜',
       embed: {
         title: BotMessageFormatter::EMBED_TITLE,
         description: embed_hash_description,
