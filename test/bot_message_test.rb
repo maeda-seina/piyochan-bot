@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-require 'minitest/autorun'
 require_relative '../lib/discord_api'
 require_relative '../lib/channel_info'
 require_relative '../lib/bot_message_formatter'
 require_relative '../lib/bot_message'
-require 'webmock/minitest'
+require_relative 'test_helper'
 
 class BotMessageTest < Minitest::Test
   include WebMock::API

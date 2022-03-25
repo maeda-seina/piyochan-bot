@@ -2,14 +2,7 @@ require_relative '../lib/discord_api'
 require_relative '../lib/bot_message'
 require_relative '../lib/bot_message_formatter'
 require_relative '../lib/channel_info'
-require 'minitest/autorun'
-require 'webmock/minitest'
-require 'vcr'
-
-VCR.configure do |config|
-  config.cassette_library_dir = 'test/fixtures'
-  config.hook_into :webmock
-end
+require_relative 'test_helper'
 
 class BotMessageFormatterTest < Minitest::Test
 
