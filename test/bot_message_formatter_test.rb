@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../lib/discord_api'
 require_relative '../lib/bot_message'
 require_relative '../lib/bot_message_formatter'
@@ -5,7 +7,6 @@ require_relative '../lib/channel_info'
 require_relative 'test_helper'
 
 class BotMessageFormatterTest < Minitest::Test
-
   def setup
     VCR.use_cassette('discord_api') do
       all_channels = Discordrb::API::Server.channels(ENV['DISCORD_BOT_TOKEN'],
