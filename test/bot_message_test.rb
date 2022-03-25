@@ -40,7 +40,9 @@ class BotMessageTest < Minitest::Test
 
   def embed_hash_description
     <<~TEXT
-      チャンネル名： [#ruby](https://discord.com/channels/933233655172726845/943713981581910036)\n説明： rubyについていろいろお話ししましょう〜\nhttps://www.ruby-lang.org/ja/
+      チャンネル名： [#ruby](https://discord.com/channels/933233655172726845/943713981581910036)
+      説明： rubyについていろいろお話ししましょう〜
+      https://www.ruby-lang.org/ja/
     TEXT
   end
 end
