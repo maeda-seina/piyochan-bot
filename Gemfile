@@ -16,6 +16,7 @@ end
 group :test do
   gem 'minitest'
   gem 'webmock'
+  gem 'vcr'
 end
 
 gem 'discordrb'
