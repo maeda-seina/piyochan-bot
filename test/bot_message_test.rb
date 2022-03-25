@@ -19,7 +19,7 @@ class BotMessageTest < Minitest::Test
   end
 
   def test_post_message
-    message_url = "#{Discordrb::API.api_base}/channels/#{ENV['DISCORD_RANDOM_CHANNEL_ID']}/messages"
+    message_url = "#{Discordrb::API.api_base}/channels/#{ENV['DISCORD_CHANNEL_ID']}/messages"
     stub_message = stub_request(:post, message_url).with(body: hash_including(embed_hash))
     BotMessage.create(embed_hash_description)
     assert_requested(stub_message)

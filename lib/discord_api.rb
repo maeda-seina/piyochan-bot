@@ -9,7 +9,7 @@ module DiscordApi
 
   def self.create_message(message, embed_message, tts: false)
     Discordrb::API::Channel.create_message(ENV['DISCORD_BOT_TOKEN'],
-                                           ENV['DISCORD_RANDOM_CHANNEL_ID'],
+                                           ENV['DISCORD_CHANNEL_ID'],
                                            message,
                                            tts,
                                            embed_message)
