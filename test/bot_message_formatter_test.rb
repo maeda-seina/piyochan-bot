@@ -16,27 +16,19 @@ class BotMessageFormatterTest < Minitest::Test
   end
 
   def test_not_include_private_text_channel
-    VCR.use_cassette('discord_api') do
-      assert_empty(select_hobby_category_channels.reject { |channel| channel['permission_overwrites'].empty? })
-    end
+    assert_empty(select_hobby_category_channels.reject { |channel| channel['permission_overwrites'].empty? })
   end
 
   def test_include_private_channel
-    VCR.use_cassette('discord_api') do
-      refute_empty(@all_parse_channels.reject { |channel| channel['permission_overwrites'].empty? })
-    end
+    refute_empty(@all_parse_channels.reject { |channel| channel['permission_overwrites'].empty? })
   end
 
   def test_not_include_minute_report_channel
-    VCR.use_cassette('discord_api') do
-      assert_empty(select_hobby_category_channels.select { |channel| channel['name'].include?('分報') })
-    end
+    assert_empty(select_hobby_category_channels.select { |channel| channel['name'].include?('分報') })
   end
 
   def test_include_minute_report_channel
-    VCR.use_cassette('discord_api') do
-      refute_empty(@all_parse_channels.select { |channel| channel['name'].include?('分報') })
-    end
+    refute_empty(@all_parse_channels.select { |channel| channel['name'].include?('分報') })
   end
 
   private
