@@ -14,7 +14,7 @@ Ruby 3.1.1
 
 **イメージ画像**
 
-![img.png](img.png)
+[![Image from Gyazo](https://i.gyazo.com/cedf61c4ab29f33f8f949409090a0bdf.png)](https://gyazo.com/cedf61c4ab29f33f8f949409090a0bdf)
 
 ## セットアップ
 
