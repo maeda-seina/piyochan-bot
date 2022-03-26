@@ -6,8 +6,15 @@ Ruby 3.1.1
 
 ## セットアップ
 
-[Discord Developer Portal — My Applications](https://discord.com/developers/applications/) でbotを作成
-（もう少し詳しく記載する）
+### Botの作成と使用したいサーバーへの招待
+
+[Discord Developer Portal — My Applications](https://discord.com/developers/applications/) でbotを作成する。
+
+作成したbotを使用したいサーバーに招待する。
+
+（詳しくは [Botアカウント作成](https://discordpy.readthedocs.io/ja/latest/discord.html) を参考にしてください）
+
+### インストール
 
 `git clone https://github.com/maeda-seina/piyochan-bot.git`
 
@@ -17,7 +24,7 @@ Ruby 3.1.1
 
 `touch .env`
 
-環境変数をenvファイルに書き込む
+→ 環境変数をenvファイルに書き込む
 
 | 環境変数               | 内容                     |
 |--------------------|------------------------|
@@ -38,7 +45,7 @@ Ruby 3.1.1
 
 `bundle exec ruby test`
 
-## デプロイ
+## Herokuへのデプロイ
 
 `heroku login`
 
