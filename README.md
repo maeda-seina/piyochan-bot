@@ -51,11 +51,11 @@ Ruby 3.1.1
 
 ## Lint
 
-`bundle exec rubocop`
+`bin/lint`
 
 ## Test
 
-`bundle exec ruby test`
+`bin/test`
 
 ## Herokuへのデプロイ
 
