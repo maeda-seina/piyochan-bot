@@ -5,7 +5,7 @@ require_relative 'discord_api'
 class ChannelInfo
   class << self
     def call_all_channel_api
-      DiscordApi::ALL_CHANNELS
+      DiscordApi.fetch_all_channels
     end
 
     def all
