@@ -63,6 +63,8 @@ GEM
     rubocop-performance (1.13.3)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
+    rubocop-rake (0.6.0)
+      rubocop (~> 1.0)
     ruby-progressbar (1.11.0)
     unf (0.1.4)
       unf_ext
@@ -90,6 +92,7 @@ DEPENDENCIES
   rubocop
   rubocop-fjord
   rubocop-minitest
+  rubocop-rake
   webmock
 
 RUBY VERSION
