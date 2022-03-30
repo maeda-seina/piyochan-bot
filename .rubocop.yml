@@ -9,3 +9,11 @@ AllCops:
 require:
   - rubocop-minitest
   - rubocop-rake
+
+Metrics/MethodLength:
+  Exclude:
+    - test/bot_message_formatter_test.rb
+
+Layout/LineLength:
+  Exclude:
+    - test/bot_message_formatter_test.rb
