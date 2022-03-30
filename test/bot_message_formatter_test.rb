@@ -28,7 +28,6 @@ class BotMessageFormatterTest < Minitest::Test
   end
 
   def test_not_include_private_text_channel_in_announce_channels
-    # permission_overwritesの中身があるものを排除(empty?メソッドを使った結果trueのものを排除する。false、つまり中身があるものはそのままいてもらう。)
     refute_empty(@channels.reject { |channel| channel['permission_overwrites'].empty? })
     assert_empty(select_hobby_category_channels.reject { |channel| channel['permission_overwrites'].empty? })
   end
@@ -50,13 +49,13 @@ class BotMessageFormatterTest < Minitest::Test
     }
   end
 
-  # 趣味カテゴリーと、趣味カテゴリーのチャンネル一つと、他のカテゴリーと、他のカテゴリーのチャンネル一つと、プライベートチャンネルを含むカテゴリー、プライベートチャンネル、分報カテゴリー、分報チャンネル
+  # 趣味カテゴリー、趣味カテゴリーチャンネル、他のカテゴリー、他のカテゴリーチャンネル、プライベートチャンネルを含むカテゴリー、プライベートチャンネル、分報カテゴリー、分報チャンネル
   def channel_body
     [
       # 趣味カテゴリー
       { id: '933233655172726846', type: 4, name: '趣味', position: 11, parent_id: '933233655172726846', guild_id: '933233655172726845',
         permission_overwrites: [] },
-      # 趣味カテゴリーチャンネル（Ruby）
+      # 趣味カテゴリーチャンネル
       { id: '943713981581910036', last_message_id: '956778837360934972', type: 0, name: 'ruby', position: 19, parent_id: '933233655172726846',
         topic: "rubyについていろいろお話ししましょう〜\nhttps://www.ruby-lang.org/ja/", guild_id: '933233655172726845', permission_overwrites: [], rate_limit_per_user: 0, nsfw: false },
       # お知らせカテゴリー
@@ -66,10 +65,10 @@ class BotMessageFormatterTest < Minitest::Test
       { id: '933233655172726848', last_message_id: '950983610180182048',
         type: 0, name: '全体のお知らせ', position: 0, parent_id: '951639452927807499', topic: 'generalチャンネルです。',
         guild_id: '933233655172726845', permission_overwrites: [], rate_limit_per_user: 0, nsfw: false },
-      # プライベートカテゴリのチャンネル
+      # プライベートカテゴリ
       { id: '951645520357621780', type: 4, name: '企業×フィヨルド',
         position: 9, parent_id: nil, guild_id: '933233655172726845', permission_overwrites: [] },
-      # 株式会社xxさん
+      # プライベートチャンネル
       { id: '951647258775027782',
         last_message_id: nil, type: 0, name: '株式会社xxさん',
         position: 15, parent_id: '951645520357621780', topic: nil, guild_id: '933233655172726845', permission_overwrites: [{ id: '933233655172726845', type: 'role', allow: 0, deny: 1024, allow_new: '0', deny_new: '1024' }],
@@ -77,7 +76,7 @@ class BotMessageFormatterTest < Minitest::Test
       # 分報カテゴリー
       { id: '951645972944011265', type: 4, name: 'M（ひとりごと・分報）',
         position: 13, parent_id: nil, guild_id: '933233655172726845', permission_overwrites: [] },
-      # maedaの分報
+      # 分報チャンネル
       { id: '951648168167239740', last_message_id: nil, type: 0, name: 'maeda🛌', position: 21, parent_id: '951645972944011265', topic: nil,
         guild_id: '933233655172726845', permission_overwrites: [], rate_limit_per_user: 0, nsfw: false }
     ]
