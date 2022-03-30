@@ -46,8 +46,9 @@ Ruby 3.1.1
 
 （※`DISCORD_BOT_TOKEN`については、`DISCORD_BOT_TOKEN = 'Bot YOUR_DISCORD_BOT_TOKEN'`と設定をお願いします。）
 
-## 実行
-`bundle exec ruby bin/send_message.rb`
+## プログラム実行
+
+`bin/run`
 
 ## Lint
 
