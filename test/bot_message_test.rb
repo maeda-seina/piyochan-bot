@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require 'minitest/autorun'
 require_relative '../lib/discord_api'
 require_relative '../lib/channel_info'
 require_relative '../lib/bot_message_formatter'
 require_relative '../lib/bot_message'
+require 'minitest/autorun'
 require 'webmock/minitest'
 
 class BotMessageTest < Minitest::Test
@@ -19,6 +19,9 @@ class BotMessageTest < Minitest::Test
   end
 
   def test_post_message
+    fetch_channel_url = "#{Discordrb::API.api_base}/guilds/#{ENV['DISCORD_SERVER_ID']}/channels"
+    stub_request(:get, fetch_channel_url)
+      .to_return(status: 200, body: [].to_json, headers: {})
     message_url = "#{Discordrb::API.api_base}/channels/#{ENV['DISCORD_CHANNEL_ID']}/messages"
     stub_message = stub_request(:post, message_url).with(body: hash_including(embed_hash))
     BotMessage.create(embed_hash_description)
