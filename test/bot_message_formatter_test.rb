@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../lib/discord_api'
 require_relative '../lib/channel_info'
-require_relative '../lib/bot_message_formatter'
-require_relative '../lib/bot_message'
 require 'minitest/autorun'
 require 'webmock/minitest'
 
@@ -15,7 +12,7 @@ class BotMessageFormatterTest < Minitest::Test
     stub_request(:get, 'https://discord.com/api/v6/guilds/933233655172726845/channels')
       .with(headers: channel_header)
       .to_return(status: 200, body: channel_body.to_json, headers: {})
-    @channels = ChannelInfo.all
+    @channels = ChannelInfo.choose
   end
 
   def teardown
