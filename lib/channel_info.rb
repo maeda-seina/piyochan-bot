@@ -8,7 +8,7 @@ class ChannelInfo
       DiscordApi.fetch_all_channels
     end
 
-    def all
+    def choose
       JSON.parse(ChannelInfo.call_all_channel_api)
     end
   end
