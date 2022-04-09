@@ -1,20 +1,17 @@
 # frozen_string_literal: true
 
-require_relative 'channel_info'
-
 class BotMessageFormatter
   MESSAGE = 'こんにちは！今日オススメのチャンネルを紹介をするよ〜'
   EMBED_TITLE = '本日のチャンネル紹介'
 
-  def initialize
-    @all_channels = ChannelInfo.all
-    @text_channel = select_hobby_category_channels.sample
+  def initialize(channels)
+    @channels = channels
   end
 
-  def create_embed_message(embed_description: nil)
+  def run
     {
       title: EMBED_TITLE,
-      description: embed_description || format_embed_description,
+      description: format_embed_description,
       color: 3_066_993
     }
   end
@@ -22,15 +19,15 @@ class BotMessageFormatter
   private
 
   def select_text_channels
-    @all_channels.select { |c| (c['type']).zero? }
+    @channels.select { |c| (c['type']).zero? }
   end
 
   def text_channel_name
-    @text_channel['name']
+    select_hobby_category_channel['name']
   end
 
   def text_channel_topic
-    @text_channel['topic']
+    select_hobby_category_channel['topic']
   end
 
   def topic_message
@@ -38,7 +35,7 @@ class BotMessageFormatter
   end
 
   def text_channel_url
-    "https://discord.com/channels/#{@text_channel['guild_id']}/#{@text_channel['id']}"
+    "https://discord.com/channels/#{select_hobby_category_channel['guild_id']}/#{select_hobby_category_channel['id']}"
   end
 
   def format_embed_description
@@ -48,14 +45,14 @@ class BotMessageFormatter
   end
 
   def select_hobby_category
-    @all_channels.select { |channel| channel['name'].include?('趣味') }
+    @channels.select { |channel| channel['name'].include?('趣味') }
   end
 
   def hobby_category_id
     select_hobby_category[0]['id']
   end
 
-  def select_hobby_category_channels
-    @all_channels.select { |channel| channel['parent_id'] == hobby_category_id }
+  def select_hobby_category_channel
+    @channels.select { |channel| channel['parent_id'] == hobby_category_id }.sample
   end
 end
