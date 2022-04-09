@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'bot_message_formatter'
-
 class BotMessage
   MESSAGE = 'こんにちは！今日オススメのチャンネルを紹介をするよ〜'
 
