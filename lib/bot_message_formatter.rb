@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class BotMessageFormatter
-  MESSAGE = 'こんにちは！今日オススメのチャンネルを紹介をするよ〜'
   EMBED_TITLE = '本日のチャンネル紹介'
 
   def initialize(channels)
