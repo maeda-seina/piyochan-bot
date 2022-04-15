@@ -3,6 +3,7 @@
 require_relative 'discord_api'
 
 class ChannelInfo
+  attr_reader :channels
   def initialize
     @channels = JSON.parse(call_all_channel_api)
   end

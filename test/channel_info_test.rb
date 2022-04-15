@@ -4,7 +4,7 @@ require_relative '../lib/channel_info'
 require 'minitest/autorun'
 require 'webmock/minitest'
 
-class BotMessageFormatterTest < Minitest::Test
+class ChannelInfoTest < Minitest::Test
   include WebMock::API
 
   def setup
@@ -12,7 +12,7 @@ class BotMessageFormatterTest < Minitest::Test
     stub_request(:get, 'https://discord.com/api/v6/guilds/933233655172726845/channels')
       .with(headers: channel_header)
       .to_return(status: 200, body: channel_body.to_json, headers: {})
-    @channels = ChannelInfo.choose
+    @channels = ChannelInfo.new.channels
   end
 
   def teardown
