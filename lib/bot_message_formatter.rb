@@ -7,7 +7,7 @@ class BotMessageFormatter
     @channel = channel
   end
 
-  def run
+  def format
     {
       title: EMBED_TITLE,
       description: format_embed_description,

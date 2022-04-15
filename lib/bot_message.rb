@@ -4,9 +4,9 @@ class BotMessage
   MESSAGE = 'こんにちは！今日オススメのチャンネルを紹介をするよ〜'
 
   class << self
-    def create(formatter)
+    def create(message)
       DiscordApi.create_message(MESSAGE,
-                                formatter)
+                                message)
     end
   end
 end
