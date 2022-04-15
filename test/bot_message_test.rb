@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../lib/discord_api'
+require_relative '../lib/bot_message_formatter'
 require_relative '../lib/bot_message'
 require 'minitest/autorun'
 require 'webmock/minitest'
@@ -29,7 +30,7 @@ class BotMessageTest < Minitest::Test
     {
       content: 'こんにちは！今日オススメのチャンネルを紹介をするよ〜',
       embed: {
-        title: BotMessageFormatter::EMBED_TITLE,
+        title: '本日のチャンネル紹介',
         description: embed_hash_description,
         color: 3_066_993
       }
