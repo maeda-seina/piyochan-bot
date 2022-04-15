@@ -2,6 +2,7 @@
 
 class BotMessageFormatter
   EMBED_TITLE = '本日のチャンネル紹介'
+  MESSAGE = 'こんにちは！今日オススメのチャンネルを紹介をするよ〜'
 
   def initialize(channel)
     @channel = channel
