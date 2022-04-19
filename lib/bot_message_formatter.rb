@@ -8,7 +8,11 @@ class BotMessageFormatter
     @channel = channel
   end
 
-  def format
+  def message
+    MESSAGE
+  end
+
+  def embed_message
     {
       title: EMBED_TITLE,
       description: format_embed_description,

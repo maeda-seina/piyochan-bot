@@ -2,9 +2,8 @@
 
 class BotMessage
   class << self
-    def create(message)
-      DiscordApi.create_message(BotMessageFormatter::MESSAGE,
-                                message)
+    def create(formatter)
+      DiscordApi.create_message(formatter.message, formatter.embed_message)
     end
   end
 end
