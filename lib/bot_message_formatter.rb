@@ -1,36 +1,33 @@
 # frozen_string_literal: true
 
-require_relative 'channel_info'
-
 class BotMessageFormatter
-  MESSAGE = 'こんにちは！今日オススメのチャンネルを紹介をするよ〜'
   EMBED_TITLE = '本日のチャンネル紹介'
+  MESSAGE = 'こんにちは！今日オススメのチャンネルを紹介をするよ〜'
 
-  def initialize
-    @all_channels = ChannelInfo.all
-    @text_channel = select_hobby_category_channels.sample
+  def initialize(channel)
+    @channel = channel
   end
 
-  def create_embed_message(embed_description: nil)
+  def message
+    MESSAGE
+  end
+
+  def embed_message
     {
       title: EMBED_TITLE,
-      description: embed_description || format_embed_description,
+      description: format_embed_description,
       color: 3_066_993
     }
   end
 
   private
 
-  def select_text_channels
-    @all_channels.select { |c| (c['type']).zero? }
-  end
-
   def text_channel_name
-    @text_channel['name']
+    @channel['name']
   end
 
   def text_channel_topic
-    @text_channel['topic']
+    @channel['topic']
   end
 
   def topic_message
@@ -38,24 +35,12 @@ class BotMessageFormatter
   end
 
   def text_channel_url
-    "https://discord.com/channels/#{@text_channel['guild_id']}/#{@text_channel['id']}"
+    "https://discord.com/channels/#{@channel['guild_id']}/#{@channel['id']}"
   end
 
   def format_embed_description
     description = "チャンネル名： [##{text_channel_name}](#{text_channel_url})"
     description += topic_message unless text_channel_topic.nil?
     description
-  end
-
-  def select_hobby_category
-    @all_channels.select { |channel| channel['name'].include?('趣味') }
-  end
-
-  def hobby_category_id
-    select_hobby_category[0]['id']
-  end
-
-  def select_hobby_category_channels
-    @all_channels.select { |channel| channel['parent_id'] == hobby_category_id }
   end
 end
