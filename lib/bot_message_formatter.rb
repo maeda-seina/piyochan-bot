@@ -32,16 +32,21 @@ class BotMessageFormatter
   end
 
   def topic_message
-    "\n説明： #{text_channel_topic}"
+    "説明： #{text_channel_topic}"
   end
 
   def text_channel_url
     "https://discord.com/channels/#{@channel['guild_id']}/#{@channel['id']}"
   end
 
+  def text_channel_name_and_url
+    "チャンネル名： [##{text_channel_name}](#{text_channel_url})"
+  end
+
   def format_embed_description
-    description = "チャンネル名： [##{text_channel_name}](#{text_channel_url})"
-    description += topic_message if text_channel_topic
-    description
+    description = []
+    description << text_channel_name_and_url
+    description << topic_message if text_channel_topic
+    description.join("\n")
   end
 end
