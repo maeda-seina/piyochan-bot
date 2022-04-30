@@ -41,7 +41,7 @@ class BotMessageFormatter
 
   def format_embed_description
     description = "チャンネル名： [##{text_channel_name}](#{text_channel_url})"
-    description += topic_message unless text_channel_topic.nil?
+    description += topic_message if text_channel_topic
     description
   end
 end
