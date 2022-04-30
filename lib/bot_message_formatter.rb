@@ -3,6 +3,7 @@
 class BotMessageFormatter
   EMBED_TITLE = '本日のチャンネル紹介'
   MESSAGE = 'こんにちは！今日オススメのチャンネルを紹介をするよ〜'
+  private_constant :EMBED_TITLE, :MESSAGE
 
   def initialize(channel)
     @channel = channel
