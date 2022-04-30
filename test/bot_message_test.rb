@@ -32,7 +32,7 @@ class BotMessageTest < Minitest::Test
       embed: {
         title: '本日のチャンネル紹介',
         description: embed_hash_description,
-        color: 3_066_993
+        color: 0x2ECC71
       }
     }
   end

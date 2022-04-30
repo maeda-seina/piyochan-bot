@@ -17,7 +17,7 @@ class BotMessageFormatter
     {
       title: EMBED_TITLE,
       description: format_embed_description,
-      color: 3_066_993
+      color: 0x2ECC71
     }
   end
 
