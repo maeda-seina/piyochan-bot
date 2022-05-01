@@ -17,18 +17,8 @@ class BotMessageTest < Minitest::Test
     WebMock.allow_net_connect!
   end
 
-  # そもそもこのテストは何をやりたい？一番そこが曖昧な気がする。
-  # 何をテストしたい？
-  # → BotMessageのcreateメソッド!!
-  # BotMessageのcreateメソッドは何をやってる？
-  # → Discordにpost飛ばしてる。
   def test_post_message
     message_url = "#{Discordrb::API.api_base}/channels/#{ENV['DISCORD_CHANNEL_ID']}/messages"
-    # stub_request → postした結果をstubしてる。
-    # postした結果とは？ → message_url（ここではrandomチャンネルへのアクセス）へbodyをpostした結果。
-    # BotMessage.create(formatter)でcreateしたpostの結果と同じ結果だったらOKという内容
-    # hash_includingは指定したkeyとvalueの組以外のものは無視してくれる。という認識。
-    # エラーが出るというのは、BotMessage.create(formatter)でbodyの中身に、stubしてるbodyの中身がないってこと？
     stub_message = stub_request(:post, message_url).with(body: hash_including(embed_hash))
     formatter = BotMessageFormatter.new(channel)
     BotMessage.create(formatter)
@@ -49,11 +39,7 @@ class BotMessageTest < Minitest::Test
   end
 
   def embed_hash_description
-    <<~TEXT
-      チャンネル名： [#ruby](https://discord.com/channels/933233655172726845/943713981581910036)
-      説明： rubyについていろいろお話ししましょう〜
-      https://www.ruby-lang.org/ja/
-    TEXT
+    "チャンネル名： [#ruby](https://discord.com/channels/933233655172726845/943713981581910036)\n説明： rubyについていろいろお話ししましょう〜\nhttps://www.ruby-lang.org/ja/"
   end
 
   def channel
