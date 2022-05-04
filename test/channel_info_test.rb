@@ -19,7 +19,7 @@ class ChannelInfoTest < Minitest::Test
   end
 
   def test_select_hobby_category_channel
-    assert_equal ChannelInfo.new.choose, hobby_category_channel
+    assert_equal hobby_category_channel, ChannelInfo.new.choose
   end
 
   private
