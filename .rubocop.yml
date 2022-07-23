@@ -13,6 +13,11 @@ require:
 Metrics/MethodLength:
   Exclude:
     - test/bot_message_formatter_test.rb
+    - test/channel_info_test.rb
+
+Metrics/ClassLength:
+  Exclude:
+    - test/channel_info_test.rb
 
 Layout/LineLength:
   Exclude:
