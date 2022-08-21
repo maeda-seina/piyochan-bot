@@ -6,7 +6,7 @@ require_relative '../lib/bot_message'
 require 'minitest/autorun'
 require 'webmock/minitest'
 
-class BotMessageTest < Minitest::Test
+class BotMessageFormatterTest < Minitest::Test
   include WebMock::API
 
   def setup
