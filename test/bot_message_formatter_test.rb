@@ -1,44 +1,33 @@
 # frozen_string_literal: true
 
-require_relative '../lib/discord_api'
 require_relative '../lib/bot_message_formatter'
-require_relative '../lib/bot_message'
 require 'minitest/autorun'
-require 'webmock/minitest'
 
-class BotMessageFormatterTest < Minitest::Test
-  include WebMock::API
-
+class BotMessageTest < Minitest::Test
   def setup
-    WebMock.disable_net_connect!
+    @formatter = BotMessageFormatter.new(channel)
   end
 
-  def teardown
-    WebMock.allow_net_connect!
+  def test_message
+    assert_equal 'こんにちは！今日オススメのチャンネルを紹介をするよ〜', @formatter.message
   end
 
-  def test_post_message
-    message_url = "#{Discordrb::API.api_base}/channels/#{ENV['DISCORD_CHANNEL_ID']}/messages"
-    stub_message = stub_request(:post, message_url).with(body: hash_including(embed_hash))
-    formatter = BotMessageFormatter.new(channel)
-    BotMessage.create(formatter)
-    assert_requested(stub_message)
+  def test_embed_message
+    expected = expected_embed_message
+    assert_equal expected, @formatter.embed_message
   end
 
   private
 
-  def embed_hash
+  def expected_embed_message
     {
-      content: 'こんにちは！今日オススメのチャンネルを紹介をするよ〜',
-      embed: {
-        title: '本日のチャンネル紹介',
-        description: embed_hash_description,
-        color: 0x2ECC71
-      }
+      title: '本日のチャンネル紹介',
+      description: embed_message_description,
+      color: 3_066_993
     }
   end
 
-  def embed_hash_description
+  def embed_message_description
     text = <<~TEXT
       チャンネル名： [#ruby](https://discord.com/channels/933233655172726845/943713981581910036)
       説明： rubyについていろいろお話ししましょう〜
