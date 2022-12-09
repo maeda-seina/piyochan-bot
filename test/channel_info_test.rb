@@ -9,7 +9,7 @@ class ChannelInfoTest < Minitest::Test
 
   def setup
     WebMock.disable_net_connect!
-    stub_request(:get, 'https://discord.com/api/v6/guilds/933233655172726845/channels')
+    stub_request(:get, "https://discord.com/api/v6/guilds/#{ENV['DISCORD_SERVER_ID']}/channels")
       .with(headers: channel_header)
       .to_return(status: 200, body: channel_body.to_json, headers: {})
   end
